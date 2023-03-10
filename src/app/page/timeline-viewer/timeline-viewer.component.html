@@ -1,0 +1,74 @@
+<div class="container-xl">
+
+  <div class="row mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Disclaimer</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Export your Google Maps trips with this tool easily & quickly.</h6>
+        <p class="card-text">Attention: “Your trips exported from Google Maps Timeline with any tool are not sufficient as an IRS-Proof mileage log" - points out our Platinum sponsor, MileageWise in their <a href="https://www.mileagewise.com/free-mileage-logs-with-google-timeline/?utm_source=googlechrome&utm_medium=timelineviewerextension&utm_campaign=extension">blog post</a>.</p>
+        <p>MileageWise, on the other hand, is able to convert these exported trips into an IRS-Proof mileage log.</p>
+        <a href="https://www.mileagewise.com/free-mileage-logs-with-google-timeline/?utm_source=googlechrome&utm_medium=timelineviewerextension&utm_campaign=extension" class="card-link">Read the blog post</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row mt-5 mb-5">
+    <div class="input-group" style="flex-direction: row-reverse;">
+      <div class="btn-group ps-4" role="group">
+        <button class="btn btn-secondary" type="button" name="Save All Cached KMLs" title="Save All Cached KMLs"
+                (click)="saveAsKML()" [disabled]="saveInProgress">
+          <i class="bi bi-save"></i> Save All Cached KMLs
+        </button>
+        <button class="btn btn-secondary" type="button" name="clearCache" title="Clear Cache"
+                (click)="clearCache()" [disabled]="clearInProgress">
+          <i class="bi bi-trash"></i> Clear Cache
+        </button>
+      </div>
+      <ngbd-datepicker-range-popup (dateRange)="onDateRangeSelected($event)"></ngbd-datepicker-range-popup>
+    </div>
+  </div>
+  <div class="row mt-5 mb-5 justify-content-center">
+    <table
+      id="table"
+
+      class="table table-striped"
+      data-toggle="table"
+      data-id-field="id"
+
+      data-show-footer="true"
+
+      data-sortable="true"
+      data-remember-order="true"
+
+      data-show-multi-sort="true"
+      data-show-multi-sort-button="true"
+
+      data-pagination="true"
+      data-page-list="[10, 25, 50, 100, 200, 500, 1000, 10000, All]"
+      data-page-size="10"
+      data-pagination-v-align="top"
+      data-pagination-use-intermediate="true"
+
+      data-search="true"
+      data-search-highlight="true"
+
+      data-filter-control="true"
+      data-show-search-clear-button="true"
+      data-show-filter-control-switch="true"
+      data-filter-control-multiple-search="true"
+      data-filter-control-multiple-search-delimiter=";"
+
+      data-show-print="true"
+
+      data-show-export="true"
+
+      data-show-columns="true"
+      data-show-columns-toggle-all="true"
+      data-show-button-text="true"
+      data-locale="en-US"
+    >
+    </table>
+  </div>
+
+</div>

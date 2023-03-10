@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Google Maps Timeline Viewer",
+  "version": "0.1.0",
+
+  "description": "Export your trips from Google Maps Timeline to your computer for tax or any other purposes.",
+
+  "action": {
+    "default_title": "Open Timeline Viewer"
+  },
+
+  "icons": {
+    "128": "assets/icons/timeline-icon-transparency-128.png"
+  },
+
+  "permissions": [
+    "storage",
+    "unlimitedStorage"
+  ],
+
+  "optional_permissions": [
+    "downloads"
+  ],
+
+  "host_permissions":[
+    "https://timeline.google.com/*",
+    "https://*.google.com/*"
+  ],
+
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
+}

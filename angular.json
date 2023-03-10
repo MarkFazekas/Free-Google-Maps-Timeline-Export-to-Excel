@@ -1,0 +1,135 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "timeline-viewer": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "optimization": {
+              "styles": {
+                "inlineCritical": false
+              }
+            },
+            "outputPath": "dist/timeline-viewer",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js",
+              "src/polyfills.ts"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "customWebpackConfig": {
+              "path": "./custom-webpack.config.ts"
+            },
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/manifest.json"
+            ],
+            "styles": [
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/bootstrap-table/dist/bootstrap-table.css",
+              "node_modules/bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.css",
+              "node_modules/bootstrap-table/dist/extensions/group-by-v2/bootstrap-table-group-by.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.scss"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+              "node_modules/bootstrap-table/dist/bootstrap-table.js",
+              "node_modules/bootstrap-table/dist/locale/bootstrap-table-hu-HU.js",
+              "node_modules/bootstrap-table/dist/locale/bootstrap-table-en-US.js",
+              "node_modules/bootstrap-table/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.js",
+              "node_modules/bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.js",
+              "node_modules/bootstrap-table/dist/extensions/print/bootstrap-table-print.js",
+              "node_modules/tableexport.jquery.plugin/tableExport.min.js",
+              "node_modules/tableexport.jquery.plugin/libs/html2canvas/html2canvas.min.js",
+              "node_modules/tableexport.jquery.plugin/libs/js-xlsx/xlsx.core.min.js",
+              "node_modules/jspdf/dist/jspdf.umd.js",
+              "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js",
+              "node_modules/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3mb",
+                  "maximumError": "4mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "none"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "timeline-viewer:build:production"
+            },
+            "development": {
+              "browserTarget": "timeline-viewer:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "timeline-viewer:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing",
+              "src/polyfills.ts"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  }
+}
