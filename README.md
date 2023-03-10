@@ -8,13 +8,15 @@ MileageWise, on the other hand, is able to convert these exported trips into an 
 
 ## Build
 
+**The Angular CLI requires a minimum Node.js version of either v14.20, v16.13 or v18.10.**
+
 Run `npm install`
 
-Run `ng build --configuration production` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Dev
 
-Run `ng build --watch --configuration production` to build and run the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run watch` to build and run the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Privacy
 
