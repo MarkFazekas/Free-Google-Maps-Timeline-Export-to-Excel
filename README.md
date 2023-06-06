@@ -1,4 +1,4 @@
-# TimelineViewer
+# Free Google Maps Timeline Export to Excel
 
 ## Disclaimer
 
