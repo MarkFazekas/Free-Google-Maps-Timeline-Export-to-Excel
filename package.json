@@ -1,11 +1,16 @@
 {
   "name": "timeline-viewer",
-  "version": "0.0.0",
+  "version": "0.1.7",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --configuration production",
-    "watch": "ng build --watch --configuration production",
+    "build_chrome": "npm run update_version && ng build --configuration production_chrome && npm run zip_chrome",
+    "build_firefox": "npm run update_version && ng build --configuration production_firefox && npm run zip_firefox",
+    "watch_chrome": "npm run update_version && ng build --watch --configuration production_chrome",
+    "watch_firefox": "npm run update_version && ng build --watch --configuration production_firefox",
+    "clean": "rm -rf dist/",
+    "update_version": "npm run clean && ./update_version.bash ${npm_package_version}",
+    "zip_chrome": "cd dist/${npm_package_name} && zip -r ../${npm_package_name}-${npm_package_version}-CHROME.zip *;",
+    "zip_firefox": "cd dist/${npm_package_name} && zip -r ../${npm_package_name}-${npm_package_version}-FIREFOX.zip *;",
     "test": "ng test"
   },
   "private": true,
@@ -21,6 +26,7 @@
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@popperjs/core": "^2.11.6",
     "@tmcw/togeojson": "^5.6.0",
+    "@types/bootstrap": "^5.2.6",
     "@types/geojson": "^7946.0.10",
     "@types/jquery": "^3.5.16",
     "bootstrap": "^5.2.3",

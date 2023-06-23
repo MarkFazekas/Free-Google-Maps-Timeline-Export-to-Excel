@@ -34,11 +34,7 @@
             "customWebpackConfig": {
               "path": "./custom-webpack.config.ts"
             },
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/manifest.json"
-            ],
+            "assets": [],
             "styles": [
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.css",
@@ -66,16 +62,34 @@
           },
           "configurations": {
             "production": {
-              "budgets": [
+              "outputHashing": "none"
+            },
+            "production_chrome": {
+              "assets": [
                 {
-                  "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "4mb"
+                  "glob": "manifest.json",
+                  "input":  "src/chrome/",
+                  "output": "/"
                 },
                 {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "glob": "**/*",
+                  "input":  "src/assets",
+                  "output": "/assets/"
+                }
+              ],
+              "outputHashing": "none"
+            },
+            "production_firefox": {
+              "assets": [
+                {
+                  "glob": "manifest.json",
+                  "input":  "src/firefox/",
+                  "output": "/"
+                },
+                {
+                  "glob": "**/*",
+                  "input":  "src/assets",
+                  "output": "/assets/"
                 }
               ],
               "outputHashing": "none"

@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Free Google Maps Timeline Export to Excel",
+  "version": "0.1.7",
+
+  "description": "Export your trips and mileage from Google Maps Timeline to Excel for your mileage tax deduction.",
+
+  "action": {
+    "default_title": "Open Free Google Maps Timeline Export to Excel"
+  },
+
+  "icons": {
+    "128": "assets/icons/google-maps-128_128.png",
+    "64": "assets/icons/google-maps-64_64.png",
+    "32": "assets/icons/google-maps-32_32.png",
+    "16": "assets/icons/google-maps-16_16.png"
+  },
+
+  "permissions": [
+    "storage",
+    "unlimitedStorage"
+  ],
+
+  "optional_permissions": [
+    "downloads"
+  ],
+
+  "host_permissions":[
+    "https://timeline.google.com/*",
+    "https://*.google.com/*"
+  ],
+
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
+}

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TimelineViewerService} from "../../service/timeline-viewer.service";
 import {NgbDate} from "@ng-bootstrap/ng-bootstrap";
 import {DatePipe} from "@angular/common";
+import {Modal} from "bootstrap";
 
 @Component({
   selector: 'app-timeline-viewer',
@@ -283,6 +284,9 @@ export class TimelineViewerComponent implements OnInit {
         this.listOfData = this.enrichLoadedData(collectedDataList);
         // @ts-ignore
         this.$table.bootstrapTable('load', this.listOfData);
+        // Review Kereés
+        // const myModalAlternative = new Modal('#staticBackdrop')
+        // myModalAlternative.show()
       })
     }
   }

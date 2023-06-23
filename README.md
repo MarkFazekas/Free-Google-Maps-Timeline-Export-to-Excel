@@ -12,11 +12,23 @@ MileageWise, on the other hand, is able to convert these exported trips into an 
 
 Run `npm install`
 
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Chrome & Edge & Opera
+
+Run `npm run build_chrome` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+### Firefox
+
+Run `npm run build_firefox` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Dev
 
-Run `npm run watch` to build and run the project. The build artifacts will be stored in the `dist/` directory.
+### Chrome & Edge & Opera
+
+Run `npm run watch_chrome` to build and run the project. The build artifacts will be stored in the `dist/` directory.
+
+### Firefox
+
+Run `npm run watch_firefox` to build and run the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Privacy
 
