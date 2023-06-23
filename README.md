@@ -8,6 +8,8 @@ MileageWise, on the other hand, is able to convert these exported trips into an 
 
 ## Build
 
+Operating System: **Ubuntu 18.04 LTS (Bionic Beaver)**
+
 **The Angular CLI requires a minimum Node.js version of either v14.20, v16.13 or v18.10.**
 
 Run `npm install`
