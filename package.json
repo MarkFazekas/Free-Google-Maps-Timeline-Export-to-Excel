@@ -1,16 +1,18 @@
 {
   "name": "timeline-viewer",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "scripts": {
     "ng": "ng",
-    "build_chrome": "npm run update_version && ng build --configuration production_chrome && npm run zip_chrome",
-    "build_firefox": "npm run update_version && ng build --configuration production_firefox && npm run zip_firefox",
+    "release_all": "npm run clean_releases && npm run build_chrome && npm run build_firefox",
+    "build_chrome": "npm run update_version && ng build --configuration production_chrome && npm run zip_release_chrome",
+    "build_firefox": "npm run update_version && ng build --configuration production_firefox && npm run zip_release_firefox",
     "watch_chrome": "npm run update_version && ng build --watch --configuration production_chrome",
     "watch_firefox": "npm run update_version && ng build --watch --configuration production_firefox",
     "clean": "rm -rf dist/",
+    "clean_releases": "rm -rf releases/",
     "update_version": "npm run clean && ./update_version.bash ${npm_package_version}",
-    "zip_chrome": "cd dist/${npm_package_name} && zip -r ../${npm_package_name}-${npm_package_version}-CHROME.zip *;",
-    "zip_firefox": "cd dist/${npm_package_name} && zip -r ../${npm_package_name}-${npm_package_version}-FIREFOX.zip *;",
+    "zip_release_chrome": "mkdir -p releases && cd dist/${npm_package_name} && zip -r ../${npm_package_name}-${npm_package_version}-CHROME.zip * && cd .. && mv ${npm_package_name}-${npm_package_version}-CHROME.zip ../releases/${npm_package_name}-${npm_package_version}-CHROME.zip",
+    "zip_release_firefox": "mkdir -p releases && cd dist/${npm_package_name} && zip -r ../${npm_package_name}-${npm_package_version}-FIREFOX.zip * && cd .. && mv ${npm_package_name}-${npm_package_version}-FIREFOX.zip ../releases/${npm_package_name}-${npm_package_version}-FIREFOX.zip",
     "test": "ng test"
   },
   "private": true,

@@ -1,0 +1,51 @@
+name: "Version Release"
+run-name: ${{ github.actor }} creates Github Release
+on:
+  workflow_dispatch
+
+permissions:
+  contents: write
+
+jobs:
+  set-tag:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v3
+      - name: set-tag
+        id: tag-step
+        run: |
+          # Get current date
+          CURRENT_DATE=$(date +"%Y%m%d")
+          CURRENT_TIME=$(date +"%H%M")
+          # Get current version
+          CURRENT_VERSION=$(cat package.json | jq -r ".version")
+          # Construct tag name
+          TAG_NAME=v${CURRENT_VERSION}
+          RELEASE_NAME=${TAG_NAME}-${CURRENT_DATE}-${CURRENT_TIME}
+          echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_OUTPUT
+          echo "RELEASE_NAME=${RELEASE_NAME}" >> $GITHUB_OUTPUT
+      - name: verify-tag
+        run: |
+          echo ${{ steps.tag-step.outputs.TAG_NAME }}
+          echo ${{ steps.tag-step.outputs.RELEASE_NAME }}
+    outputs:
+      current_tag: ${{ steps.tag-step.outputs.TAG_NAME }}
+      current_release: ${{ steps.tag-step.outputs.RELEASE_NAME }}
+  build-all:
+    runs-on: ubuntu-latest
+    needs: [set-tag]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm run release_all
+      - name: Create Release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          name: ${{ needs.set-tag.outputs.current_release }}
+          tag: ${{ needs.set-tag.outputs.current_tag }}
+          generateReleaseNotes: true
+          artifacts: "releases/*"
+

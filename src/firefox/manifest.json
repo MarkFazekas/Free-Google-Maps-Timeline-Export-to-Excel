@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Free Google Maps Timeline Export to Excel",
-  "version": "0.1.7",
+  "version": "0.1.8",
 
   "description": "Export your trips and mileage from Google Maps Timeline to Excel for your mileage tax deduction.",
 
