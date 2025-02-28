@@ -35,10 +35,10 @@
     "bootstrap-icons": "^1.10.3",
     "bootstrap-table": "^1.21.2",
     "jquery": "^3.6.3",
-    "jspdf": "^2.5.1",
+    "jspdf": "https://github.com/szabogabor/jsPDF.git",
     "jspdf-autotable": "^3.5.28",
     "rxjs": "~7.8.0",
-    "tableexport.jquery.plugin": "^1.26.0",
+    "tableexport.jquery.plugin": "^1.30.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
