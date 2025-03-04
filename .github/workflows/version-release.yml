@@ -39,7 +39,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm ci
+      - run: npm ci --legacy-peer-deps
       - run: npm run release_all
       - name: Create Release
         uses: ncipollo/release-action@v1.12.0
